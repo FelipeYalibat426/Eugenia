@@ -1,0 +1,471 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    /* Colores base para la primera pantalla */
+    --deep-red: #8b0000;
+    --cream: #fffdd0;
+    
+    /* Nueva Paleta: Rosa y Negro para el resto de la web */
+    --bg-color: #ff8eb3; /* Fondo fucsia claro vibrante */
+    --text-color: #2b2b2b; /* Gris muy oscuro/negro suave para lectura */
+    --title-color: #111111; /* Negro profundo para los títulos */
+    --primary: #ff4f81; /* Rosa fuerte para botones y detalles */
+    --accent-dark: #1a1a1a; /* Negro para bordes elegantes */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--deep-red); /* Inicia en rojo, JS lo cambia luego */
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease;
+}
+
+.handwritten {
+    font-family: 'Dancing Script', cursive;
+    color: #5c4033;
+}
+
+.hidden { display: none !important; }
+
+/* Animación general para cambio de pantallas */
+.view { 
+    animation: fadeIn 0.5s ease-in-out; 
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+button { 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* Botón principal (El de debajo de la carta) */
+.btn-primary {
+    background: linear-gradient(135deg, #ff4f81, #ff2a66);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 79, 129, 0.4);
+}
+
+.btn-primary:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow: 0 6px 20px rgba(255, 79, 129, 0.6);
+}
+
+/* Botón de Regresar (Estilo cristal inicial) */
+#btn-back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15); 
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5); 
+    border-radius: 30px; 
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#btn-back:hover {
+    background: white;
+    color: var(--deep-red); 
+    transform: translateX(-5px); 
+}
+
+/* =========================================
+   PANTALLA 1: CARTA INTERACTIVA
+   ========================================= */
+#view-letter {
+    padding: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#petals-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    pointer-events: none; 
+    z-index: 1;
+}
+
+.petal {
+    position: absolute;
+    background-color: #ffcccc;
+    border-radius: 150% 0 150% 0;
+    opacity: 0.8;
+    animation-name: fade-out, fall-and-shake;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall-and-shake {
+    0% { top: -10%; transform: translateX(0px) rotate(0deg); }
+    100% { top: 110%; transform: translateX(60px) rotate(180deg); }
+}
+
+@keyframes fade-out {
+    0% { opacity: 0.8; }
+    80% { opacity: 0.6; }
+    100% { opacity: 0; }
+}
+
+/* Secuencia de Imágenes Responsive */
+.intro-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    width: 100%;
+}
+
+#intro-img {
+    width: 60vw; 
+    max-width: 450px; 
+    height: auto; 
+    aspect-ratio: 4 / 5; 
+    object-fit: cover; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.4s ease;
+}
+
+#intro-img:hover { transform: scale(1.05); }
+
+#intro-text {
+    transition: opacity 0.4s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+/* Carta estilo cuaderno rayado */
+.notebook-card {
+    background: repeating-linear-gradient( white, white 28px, #e3e3e3 29px );
+    padding: 40px 60px;
+    border: 2px solid #e5e5e5;
+    width: 90vw;
+    max-width: 600px;
+    text-align: left;
+    margin: 0 auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease;
+    position: relative;
+    z-index: 20;
+    border-radius: 0 15px 15px 0;
+    border-left: 5px solid #ff4f81;
+}
+
+.notebook-card h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.notebook-card p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    line-height: 29px; 
+    color: #444;
+    margin: 0 0 29px 0; 
+}
+
+/* =========================================
+   PANTALLAS SECUNDARIAS (DISEÑO ROSA/NEGRO)
+   ========================================= */
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    font-weight: 700; 
+    color: var(--title-color); 
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-shadow: 3px 3px 6px rgba(255, 79, 129, 0.2); 
+}
+
+/* Títulos de las secciones */
+.blog-section h2, .calendar-section h2, .tickets-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    font-weight: 700; 
+    color: var(--primary); 
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+/* Contenedores blancos (Tarjetas anchas) */
+.blog-section, .calendar-section, .tickets-section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 25px auto;
+    width: 90vw; 
+    max-width: 1100px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+    border-top: 5px solid var(--accent-dark); 
+    color: var(--text-color); 
+}
+
+.blog-section p, .calendar-section p {
+    font-size: 1.1rem;
+    line-height: 1.8; 
+    text-align: justify;
+}
+
+/* --- ESTILOS PARA LA GALERÍA POLAROID --- */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 10px;
+}
+
+.polaroid {
+    background: white;
+    padding: 12px 12px 25px 12px; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15); 
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    transform: rotate(-2deg); 
+}
+
+.polaroid:nth-child(even) { transform: rotate(3deg); }
+.polaroid:nth-child(3n) { transform: rotate(-4deg); }
+
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg); 
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(255, 79, 129, 0.3); 
+}
+
+.polaroid img {
+    width: 100%;
+    height: 280px; 
+    object-fit: cover; 
+    filter: sepia(10%) contrast(1.1); 
+}
+
+.polaroid .caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--title-color);
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Estilo Especial para la Foto Destacada */
+.polaroid.destacada {
+    border: 3px solid var(--primary); 
+    box-shadow: 0 10px 25px rgba(255, 79, 129, 0.4); 
+    transform: rotate(0deg) scale(1.05); 
+    z-index: 5;
+}
+
+@media (min-width: 768px) {
+    .polaroid.destacada {
+        grid-column: span 2; 
+        grid-row: span 2;    
+    }
+    
+    .polaroid.destacada img {
+        height: 100%; 
+        max-height: 550px;
+    }
+
+    .polaroid.destacada .caption {
+        font-size: 2.2rem; 
+        font-weight: bold;
+    }
+}
+
+.polaroid.destacada:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 79, 129, 0.6);
+    z-index: 20;
+}
+
+/* =========================================
+   CALENDARIO
+   ========================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.day-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.day-btn.locked { background-color: #eee; border-color: #ccc; color: #999; cursor: not-allowed; }
+.day-btn.unlocked:hover { background-color: var(--primary); color: white; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+
+/* =========================================
+   TICKETS Y QR
+   ========================================= */
+.tickets-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.ticket { 
+    border: 2px dashed var(--primary); 
+    padding: 20px; 
+    border-radius: 10px; 
+    background: #fffdf7; /* Un tonito crema muy suave */
+    width: 250px; 
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.ticket:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 79, 129, 0.2);
+}
+
+.ticket h3 {
+    color: var(--title-color);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+}
+
+.qr-code {
+    width: 120px;
+    height: 120px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 3px solid var(--bg-color); /* Borde fucsia clarito */
+    padding: 5px;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+    transform: scale(1.05);
+}
+
+/* =========================================
+   PANTALLA 3: VISTA DIARIA
+   ========================================= */
+.daily-card { 
+    background: linear-gradient(135deg, #ffffff, #fff0f5); 
+    padding: 40px 30px; 
+    border-radius: 15px; 
+    max-width: 600px; 
+    margin: 20px auto; 
+    box-shadow: 0 10px 30px rgba(255, 79, 129, 0.2); 
+    border: 2px dashed #ffb6c1; 
+    position: relative;
+}
+
+#daily-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+#daily-message {
+    font-family: 'Arial Black', 'Impact', sans-serif; 
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--title-color); 
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+    margin-top: 20px;
+    text-transform: uppercase; 
+}
+
+#spotify-container { 
+    max-width: 600px; 
+    margin: 0 auto 20px auto; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+#daily-img { 
+    max-width: 100%; 
+    border-radius: 10px; 
+    margin-top: 10px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    border: 5px solid white; 
+}
+
+/* =========================================
+   DISEÑO RESPONSIVE (MÓVILES)
+   ========================================= */
+@media (max-width: 600px) {
+    #intro-img {
+        width: 85vw; 
+        max-width: 350px;
+    }
+    
+    #intro-text { font-size: 2.2rem !important; }
+    
+    .notebook-card {
+        padding: 30px 20px; 
+        width: 85vw;
+    }
+    
+    .notebook-card h3 { font-size: 1.8rem; }
+    .notebook-card p { font-size: 1.2rem; }
+    
+    .main-title { font-size: 2.5rem; }
+    
+    .grid { grid-template-columns: repeat(4, 1fr); }
+    
+    .ticket { width: 100%; } /* Ajuste de los tickets para celular */
+}

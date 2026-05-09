@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumple Eugenia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Botón de regresar global -->
+    <button id="btn-back" class="hidden" onclick="goBack()">⬅ Regresar</button>
+
+    <!-- PANTALLA 1: La Carta Interactiva -->
+    <section id="view-letter" class="view active">
+        
+        <!-- Contenedor de pétalos con muchísimos más elementos -->
+        <div id="petals-wrapper">
+            <div id="petals-container">
+                <div class="petal" style="left: 5%; width: 15px; height: 20px; animation-delay: 0s; animation-duration: 4.5s;"></div>
+                <div class="petal" style="left: 12%; width: 10px; height: 15px; animation-delay: 1.2s; animation-duration: 5s;"></div>
+                <div class="petal" style="left: 20%; width: 18px; height: 22px; animation-delay: 2.5s; animation-duration: 6s;"></div>
+                <div class="petal" style="left: 28%; width: 12px; height: 18px; animation-delay: 0.8s; animation-duration: 4s;"></div>
+                <div class="petal" style="left: 35%; width: 16px; height: 20px; animation-delay: 3s; animation-duration: 5.5s;"></div>
+                <div class="petal" style="left: 42%; width: 10px; height: 14px; animation-delay: 1.5s; animation-duration: 4.8s;"></div>
+                <div class="petal" style="left: 50%; width: 19px; height: 24px; animation-delay: 0.2s; animation-duration: 6.2s;"></div>
+                <div class="petal" style="left: 58%; width: 14px; height: 19px; animation-delay: 2.8s; animation-duration: 5s;"></div>
+                <div class="petal" style="left: 65%; width: 12px; height: 16px; animation-delay: 4.1s; animation-duration: 4.5s;"></div>
+                <div class="petal" style="left: 72%; width: 17px; height: 21px; animation-delay: 1.9s; animation-duration: 5.8s;"></div>
+                <div class="petal" style="left: 80%; width: 13px; height: 17px; animation-delay: 3.5s; animation-duration: 5.2s;"></div>
+                <div class="petal" style="left: 88%; width: 15px; height: 20px; animation-delay: 0.5s; animation-duration: 4.6s;"></div>
+                <div class="petal" style="left: 95%; width: 11px; height: 16px; animation-delay: 2.2s; animation-duration: 5.1s;"></div>
+                <div class="petal" style="left: 8%; width: 16px; height: 22px; animation-delay: 3.8s; animation-duration: 6.5s;"></div>
+                <div class="petal" style="left: 25%; width: 13px; height: 18px; animation-delay: 1.1s; animation-duration: 4.2s;"></div>
+                <div class="petal" style="left: 48%; width: 18px; height: 23px; animation-delay: 4.5s; animation-duration: 5.9s;"></div>
+                <div class="petal" style="left: 62%; width: 10px; height: 15px; animation-delay: 0.9s; animation-duration: 4.7s;"></div>
+                <div class="petal" style="left: 78%; width: 14px; height: 20px; animation-delay: 2.6s; animation-duration: 5.3s;"></div>
+                <div class="petal" style="left: 92%; width: 17px; height: 21px; animation-delay: 1.4s; animation-duration: 6.1s;"></div>
+                <div class="petal" style="left: 55%; width: 15px; height: 19px; animation-delay: 3.2s; animation-duration: 4.9s;"></div>
+            </div>
+        </div>
+
+        <!-- Secuencia de imágenes narrativas -->
+        <div id="intro-sequence" class="intro-container">
+            <h2 id="intro-text" class="handwritten" style="color: var(--cream); font-size: 3rem; text-align: center;">Hola mi amor!!!<br>Tengo una pequeña sorpresa para usted…</h2>
+            <img id="intro-img" src="https://i.pinimg.com/736x/ff/f5/09/fff50907173be3563c30d60e1baa6cbc.jpg" alt="Correo" onclick="advanceIntro()">
+        </div>
+
+        <!-- Carta final con estilo de cuaderno -->
+        <div id="opened-letter-content" class="hidden">
+            <div class="notebook-card">
+                <h3>Feliz Cumpleaños Amor!,</h3>
+                
+                <p>Eugenia, hace algunos días iniciamos un mes que hoy valoro como algo más que un simple mes, porque ya no es solo mayo… me ha transmitido el sentimiento de que es algo mucho más grande que un simple mes. Estamos en el mes de su cumpleaños, del mes en el que llegó al mundo usted, la mujer que ha cambiado mis días, la que me hace sonreír sin darme cuenta, la que se volvió tan importante en mi vida… usted, mi amor, mi señorita bella, mi cielo, Mi Eugenia.</p>
+                
+                <p>No se imagina la ilusión que me hace comenzar este mes así, mi vida. Para mí es un mes lleno de ternura, porque así como usted le da valor a su cumpleaños, yo también quiero que sienta cuánto significa para mí celebrarla, recordarle lo especial que es y hacerle sentir, aunque sea un poquito, todo lo que usted vale.</p>
+                
+                <p>Quizás hoy no pueda darle los mejores detalles materiales, pero de corazón espero algún día poder hacerlo. Mientras tanto, quiero que en cada pequeño detalle sienta mi amor y la admiración tan grande que tengo por usted. Usted es mi hoy y todas mis mañanas, no podría decirlo mejor. Mi vida, desde que usted está en mi vida, todo tiene un brillo distinto, más bonito, más suyo.</p>
+                
+                <p>Este mes no es solo una fecha… es una oportunidad para demostrarle lo mucho que la quiero, lo mucho que la admiro y lo agradecido que estoy por tenerla conmigo, día a día. Quiero que cada día de este mes se sienta especial, porque usted lo es mi ternurina hermosa.</p>
+                
+                <p>Si sé lo que es el amor y como se siente, es gracias a usted, cada día que pasa, ese amor crece un poquito más. Gracias por existir en mi vida. Gracias por ser usted. Y permítame hacer de este mes algo tan bonito como usted se lo merece.</p>
+                
+                <p>La amo Eugenia y desde ya le deseo un Feliz Cumpleaños ❤️</p>
+                
+                <!-- Firma alineada a la derecha -->
+                <p style="text-align: right; margin-top: 10px;">Con mucho amor,<br>Armando!!! 💙</p>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <!-- Nuevo texto del botón -->
+                    <button onclick="goToMain()" class="btn-primary">Acompáñeme a ver una sorpresa más ✨</button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+ <!-- PANTALLA 2: Menú Principal -->
+    <section id="view-main" class="view hidden">
+        <h1 class="main-title">Celebrando el brillo <br> de un Mayo para Eugenia</h1>
+        
+<!-- Sección de Galería / Nuestro Álbum -->
+        <div class="blog-section">
+            <h2>Instantes que me hacen sonreír</h2>
+            <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 30px;">
+                Porque cada segundo a su lado merece ser enmarcado y rememorado...
+            </p>
+            
+            <div class="photo-gallery">
+                
+                <div class="polaroid">
+                    <img src="img/foto-apto.jpg" alt="Recuerdo">
+                    <div class="caption">✨ La carita más bella ✨</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto2-taza.jpg" alt="Recuerdo">
+                    <div class="caption">👗 Un hermoso outfit 🌸</div>
+                </div>
+
+                <!-- ESTA ES LA FOTO MÁS IMPORTANTE (Añadimos la clase 'destacada') -->
+                <div class="polaroid destacada">
+                    <img src="img/foto-20.jpg" alt="Recuerdo">
+                    <div class="caption">💍 El mejor día de mi vida ❤️</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-alm2-ant.jpg" alt="Recuerdo">
+                    <div class="caption">🍝 Un almuerzo muy rico 🍷</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-alm-ant.jpg" alt="Recuerdo">
+                    <div class="caption">🚙 Bonito viaje 🌄</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-banca-atitl.jpg" alt="Recuerdo">
+                    <div class="caption">🏞️ Una bella chica 💙</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-cumple25.jpg" alt="Recuerdo">
+                    <div class="caption">🎂 Primer cumpleaños 🥳</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-hom.jpg" alt="Recuerdo">
+                    <div class="caption">🏡 Un lugar importantísimo 💖</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-lasa.jpg" alt="Recuerdo">
+                    <div class="caption">✨ Un hermoso momento 🥰</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-sola-20.jpg" alt="Recuerdo">
+                    <div class="caption">🌹 La chica más bella 👑</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-sushi.jpg" alt="Recuerdo">
+                    <div class="caption">🍣 Otro hermoso viaje ✈️</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-taza.jpg" alt="Recuerdo">
+                    <div class="caption">☕ Un brillo insuperable ✨</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-vino.jpg" alt="Recuerdo">
+                    <div class="caption">🍷 La elegancia en su ser 🖤</div>
+                </div>
+
+                <div class="polaroid">
+                    <img src="img/foto-yalip.jpg" alt="Recuerdo">
+                    <div class="caption">☕ Disfrutando de un café 🤎</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="calendar-section">
+            <h2>Calendario de Mayo</h2>
+            <div id="calendar-grid" class="grid"></div>
+        </div>
+
+        <!-- Sección de Tickets (Regalos) -->
+        <div class="tickets-section">
+            <h2>Canje sus regalos</h2>
+            <p style="text-align: center; font-style: italic; color: #666; margin-bottom: 30px;">
+                Guarde estos pases especiales. Podrá usarlos cuando llegue el momento indicado...
+            </p>
+            
+            <div class="tickets-container">
+                
+                <!-- Ticket 1: Cena -->
+                <div class="ticket">
+                    <h3>🍽️ Cena o Brunch</h3>
+                    <p>Válido por una celebración a mi lado.</p>
+                    
+                    <!-- Enlace directo a tu imagen guardada -->
+                    <a href="img/Invitacion.png" target="_blank" title="Haz clic para ver la invitación">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CenaEspecialEugenia" alt="QR Cena" class="qr-code">
+                    </a>
+                    <p style="font-size: 0.8rem; margin-top: 10px; color: var(--primary);">* Toca el QR para descubrir *</p>
+                </div>
+
+                <!-- Ticket 2: Regalo Principal -->
+                <div class="ticket">
+                    <h3>🎁 Regalo</h3>
+                    <p>Válido por algo pensado con mucho amor.</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=RegaloEugenia2026" alt="QR Regalo" class="qr-code">
+                    <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">* Código Simbólico *</p>
+                </div>
+
+                <!-- Ticket 3: Sorpresa -->
+                <div class="ticket">
+                    <h3>✨ Regalito Sorpresa</h3>
+                    <p>Válido por un detallito para usted.</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SorpresaParaMiAmor" alt="QR Sorpresa" class="qr-code">
+                    <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">* Código Simbólico *</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PANTALLA 3: Mensaje Diario -->
+    <section id="view-daily" class="view hidden">
+        <h2 id="daily-title">Día X</h2>
+        <div id="spotify-container"></div>
+        <div class="daily-card">
+            <img id="daily-img" src="" alt="Foto del día" class="hidden">
+            <p class="handwritten" id="daily-message">Cargando mensaje...</p>
+        </div>
+    </section>
+
+    <!-- Librería para el Confeti del día 26 -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
